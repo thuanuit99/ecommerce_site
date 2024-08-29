@@ -1,9 +1,17 @@
-import { sequelize } from '../../connectdb';
-import { User } from './user';
-import { Role } from './role';
-import { Customer } from './Customer';
-const createDB = async (params) => {
-    await sequelize.sync({ alter: true });
-    console.log('All models were synchronized successfully.');
-}
-createDB()
+import Role from './role';
+import User from './user'
+
+User.belongsToMany(Role, {
+    through: "role_code",
+    foreignKey: 'userId',
+    otherKey: 'roleId',
+    as: 'role'
+})
+Role.belongsToMany(User, {
+    through: "role_code",
+    foreignKey: 'roleId',
+    otherKey: 'userId',
+    as: 'role'
+})
+
+module.exports = { User, Role };

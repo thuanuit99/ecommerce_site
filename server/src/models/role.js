@@ -1,19 +1,15 @@
-const { Sequelize, DataTypes } = require('sequelize');
-import { sequelize } from '../../connectdb';
-export const Role = sequelize.define(
+import { sequelize } from "../config/database";
+import { DataTypes } from "sequelize";
+const Role = sequelize.define(
     'Role',
     {
-        // Model attributes are defined here
-        firstName: {
+
+        name: {
             type: DataTypes.STRING,
             allowNull: false,
-        },
-        lastName: {
-            type: DataTypes.STRING,
-            // allowNull defaults to true
-        },
+        }
     },
-    {
-        // Other model options go here
-    },
+
 );
+
+module.exports = Role;
