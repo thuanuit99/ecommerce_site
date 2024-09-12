@@ -1,7 +1,7 @@
 import { sequelize } from "../config/database";
 import { DataTypes } from "sequelize";
-const Role = sequelize.define(
-    'Role',
+const Permission = sequelize.define(
+    'Permission',
     {
 
         name: {
@@ -17,4 +17,4 @@ const Role = sequelize.define(
 
 );
 
-module.exports = Role;
+module.exports = Permission;

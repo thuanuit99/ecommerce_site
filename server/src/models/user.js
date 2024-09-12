@@ -10,11 +10,23 @@ const User = sequelize.define(
         },
         lastName: {
             type: DataTypes.STRING,
+            defaultValue: "Test"
         },
         email: {
             type: DataTypes.STRING,
-            allowNull: true
-        }
+            allowNull: false,
+            defaultValue: 'abc@gmail.com'
+        },
+        password: {
+            type: DataTypes.STRING
+        },
+        phone_number: {
+            type: DataTypes.STRING,
+            validate: {
+                len: [10, 10],
+                not: ["^[a-z]+$", 'i']
+            }
+        },
     },
 
 );

@@ -1,17 +1,14 @@
 import Role from './role';
 import User from './user'
 
-User.belongsToMany(Role, {
-    through: "role_code",
-    foreignKey: 'userId',
-    otherKey: 'roleId',
-    as: 'role'
-})
-Role.belongsToMany(User, {
-    through: "role_code",
+User.belongsTo(Role, {
     foreignKey: 'roleId',
-    otherKey: 'userId',
     as: 'role'
 })
+Role.hasOne(User, {
+    foreignKey: 'roleId',
+    as: 'role'
+})
+
 
 module.exports = { User, Role };
